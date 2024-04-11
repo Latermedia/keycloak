@@ -1,0 +1,200 @@
+/* LATER THEME */
+.tLK--headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tLK--contentContainer {
+  display: flex;
+  padding: 5rem calc(var(--SPACER_LG) * 2) var(--SPACER_LG);
+}
+
+/* Card */
+.tLK--card {
+  width: 450px;
+  margin: 0 var(--SPACER);
+  padding: var(--SPACER_LG);
+  background: #fff;
+  position: relative;
+  border: 1px solid var(--GREY);
+  border-radius: var(--BORDER_RADIUS_LG);
+}
+
+.tLK--card__title {
+  font-size: var(--FONT_SIZE_H2);
+  line-height: 2.3rem;
+  margin-top: var(--SPACER_XS);
+}
+
+.tLK--card.tLK--card--featured {
+  flex: 1;
+  width: 360px;
+  height: 456px;
+  background-image: url(../../img/img--featured--youtube--shorts.png);
+  background-size: cover;
+}
+
+.tLK--card.tLK--card--testimonial {  
+  margin: 0 var(--SPACER);
+  width: 360px;
+  min-height: 630px;
+  color: var(--TEXT_COLOR);
+  background-image: url(../../img/img--signUp--testimonial--bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.tLK--card__title--testimonial {
+  font-weight: var(--BOLD_FONT_WEIGHT);
+  font-size: var(--FONT_SIZE_LG);
+  line-height: 2.025rem;
+}
+
+.tLK--card--testimonial__description {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  padding: 0 calc(var(--SPACER) * 2) calc(var(--SPACER) * 2) 0;
+}
+
+.tLK--card.tLK--card--campaign {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--SPACER_LG) 0 0 0;
+}
+  
+.tLK--card.tLK--card--campaign .tLK--card__title {
+  margin: 0;
+  padding-bottom: var(--SPACER_XS);
+  font-size: var(--FONT_SIZE_LG);
+  font-weight: var(--BASE_FONT_WEIGHT);
+  line-height: var(--FONT_SIZE_LG);
+}
+
+.tLK--card.tLK--card--campaign .tLK--card--campaign__desc {
+  display: -webkit-box;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 6;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.tLK--card.tLK--card--campaign .tLK--card--campaign__image {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  border-radius: 0 0 var(--BORDER_RADIUS) var(--BORDER_RADIUS);
+  overflow: hidden;
+}
+
+.tLK--card.tLK--card--invite {
+  width: 360px;
+  min-height: 510px;
+  padding: var(--SPACER_LG);
+  margin: 0 var(--SPACER);
+  border: var(--BORDER_WIDTH) solid var(--GREY);
+  background: url(../../img/img--signUp--invite--bg.jpeg), #a1d9fa;
+  background-size: cover;
+}
+
+.tLK--card__icon {
+  position: absolute;
+  left: 0;
+  top: -3.5rem;
+  color: var(--GREY);
+}
+
+.tLK--card__icon svg, .tLK--card__icon a, .tLK--card__icon a svg {
+  width: calc(var(--SPACER_LG) + var(--SPACER_XS));
+  height: calc(var(--SPACER_LG) + var(--SPACER_XS));
+  transition: ease 0.21s;
+}
+
+.tLK--card__icon a:hover, .tLK--card__icon a:hover svg {
+  color: var(--GREY_DARK);
+}
+
+/* Footer */
+.tLK--footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4rem;
+}
+
+.tLK--footer__item {
+  flex: 1;
+}
+
+/* List */
+.tLK--listWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.tLK--list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--SPACER_MD) var(--SPACER);
+  border: 1px solid var(--GREY);
+  border-radius: var(--BORDER_RADIUS_LG);
+  outline: none;
+  background: #fff;
+  transition: ease 0.3s;
+}
+
+.tLK--list:hover {
+  background: var(--BG_COLOR);
+}
+
+.tLK--list:nth-child(even) {
+  border-radius: 0 0 var(--BORDER_RADIUS_LG) var(--BORDER_RADIUS_LG);
+}
+
+.tLK--list:nth-child(odd) {
+  border-radius: var(--BORDER_RADIUS_LG) var(--BORDER_RADIUS_LG) 0 0;
+}
+
+.tLK--list__item {
+  /* flex: 1; */
+  text-align: left;
+}
+
+.tLK--list__title {
+  font-size: var(--FONT_SIZE_MD);
+  font-weight: var(--BOLD_FONT_WEIGHT);
+}
+
+.tLK--list__text {
+  padding-top: calc(var(--SPACER_XS)/2);
+  font-size: var(--BASE_FONT_SIZE);
+  color: var(--TEXT_LIGHT);
+}
+
+/* MOBILE */
+@media only screen and (max-width: 768px) {
+  .tLK--card {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: unset;
+  }
+  .tLK--card.tLK--card--testimonial, .tLK--card.tLK--card--featured, .tLK--card.tLK--card--campaign, .tLK--card.tLK--card--invite, .tLK--card__icon {
+    display: none;
+  }
+  .tLK--contentContainer {
+    padding: var(--SPACER_LG);
+  }
+}
+
+/* TABLET */
+@media only screen and (max-width: 980px) {
+  .tLK--contentContainer {
+    padding: var(--SPACER_LG);
+  }
+}

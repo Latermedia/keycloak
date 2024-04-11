@@ -1,0 +1,3 @@
+data/h2/keycloakdb.lock.db
+*.db
+lib/quarkus/generated-bytecode.jar

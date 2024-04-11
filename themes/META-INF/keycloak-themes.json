@@ -1,0 +1,6 @@
+{
+  "themes": [{
+      "name" : "later-v1",
+      "types": [ "login" ]
+  }]
+}
