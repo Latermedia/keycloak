@@ -31,7 +31,7 @@
             autocomplete=realm.loginWithEmailAllowed?string("email", "username")
             autofocus=true
             class="o--form__input"
-            disabled=usernameEditDisabled??
+            disabled=(login.username)?exists
             invalid=["username", "password"]
             name="username"
             type="text"

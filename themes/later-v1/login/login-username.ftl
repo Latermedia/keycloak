@@ -3,8 +3,7 @@
 <#import "components/label/username.ftl" as labelUsername>
 <#import "components/button/primary.ftl" as buttonPrimary>
 
-<@layout.registrationLayout displayMessage=!messagesPerField.existsError('username') displayInfo=(realm.password &&
-  realm.registrationAllowed && !registrationDisabled??); section>
+<@layout.registrationLayout displayMessage=!messagesPerField.existsError('username') displayInfo=true; section>
   <#if section="header">
     ${msg("loginAccountTitle")}
     <#elseif section="form">

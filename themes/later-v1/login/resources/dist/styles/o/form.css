@@ -300,3 +300,7 @@ input[type='checkbox']fieldset[disabled] {
 .o--form__helpText.is--warning {
   color: var(--STATE_WARNING);
 }
+
+input[disabled] {
+  background-color: var(--GREY_LIGHT);
+}

@@ -14,9 +14,7 @@
 
         </div>
         <div class="tLK--footer__item u--text--right">
-          <#if auth?has_content && auth.showTryAnotherWayLink()>
           <@anotherWay.kw />
-          </#if>
         </div>
       </div>
   </footer>
