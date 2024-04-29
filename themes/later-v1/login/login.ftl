@@ -30,7 +30,7 @@
           <@inputPrimary.kw
             autocomplete=realm.loginWithEmailAllowed?string("email", "username")
             autofocus=true
-            class="o--form__input"
+            class="qa--signin_email_input"
             disabled=(login.username)?exists
             invalid=["username", "password"]
             name="username"
@@ -43,6 +43,7 @@
         </div>
         <div class="o--formWrapper--lg">
           <@inputPrimary.kw
+            class="qa--signin_password_input"
             invalid=["username", "password"]
             message=false
             name="password"
@@ -60,7 +61,7 @@
         </#if>
 
         <div class="o--formSubmit" >
-          <@buttonPrimary.kw name="login" type="submit" id="loginButton">
+          <@buttonPrimary.kw class="qa--signin_login_button" name="login" type="submit" id="loginButton">
             ${msg("doLogIn")}
           </@buttonPrimary.kw>
         </div>
