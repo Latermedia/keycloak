@@ -14,7 +14,7 @@
 
 <#macro
   registrationLayout
-  displayInfo=false
+  displayInfo=true
   displayMessage=true
   displayRequiredFields=false
   heading=msg("loginAccountTitle")

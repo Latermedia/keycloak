@@ -37,21 +37,15 @@
                 <input class="o--btn--lg o--btn--primary qa--signin_login_button" name="submit" id="kc-submit" type="submit" value="Log In" />
               </div>
             </div>
-
           </div>
-
         </form>
-    <#elseif section="nav">
-      <div class="tLK--footer">
-        <div class="tLK--footer__item u--text--left">
-          <@linkSecondary.kw href="https://help.later.com/hc/en-us/articles/1500001825902-Contacting-Customer-Support-Getting-Help" target="_blank">
-          <span class="text-sm">Need help? Contact us</span>
-          </@linkSecondary.kw>
+        <div class="tLK--footer">
+          <div class="tLK--footer__item u--text--left">
+            <@linkSecondary.kw href="https://help.later.com/hc/articles/360042990433#anchor_2FA" target="_blank">
+            <span class="text-sm">Need help with verification codes?</span>
+            </@linkSecondary.kw>
+          </div>
         </div>
 
-        <div class="tLK--footer__item u--text--right">
-          <@anotherWay.kw />
-        </div>
-      </div>
     </#if>
 </@layout.registrationLayout>

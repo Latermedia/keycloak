@@ -116,9 +116,17 @@ if (utmSource === 'campaign' || utmSource === 'mavrck') {
 
 document.querySelector('.tSU--card__inputButton').addEventListener('click', function() {
   const passwordInput = document.getElementById('password');
+  const showIcon = document.getElementById('showIcon'); // SVG for showing the password
+  const hideIcon = document.getElementById('hideIcon'); // SVG for hiding the password
+
+  // Toggle the input type between 'password' and 'text'
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
+    showIcon.style.display = 'none';    // Hide the 'show' icon
+    hideIcon.style.display = 'block';   // Display the 'hide' icon
   } else {
     passwordInput.type = 'password';
+    showIcon.style.display = 'block';   // Display the 'show' icon
+    hideIcon.style.display = 'none';    // Hide the 'hide' icon
   }
 });

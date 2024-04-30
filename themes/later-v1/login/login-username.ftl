@@ -7,7 +7,7 @@
   <#if section="header">
     ${msg("loginAccountTitle")}
     <#elseif section="form">
-
+  
       <#if realm.password>
         <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}"
           method="post">
