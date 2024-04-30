@@ -13,9 +13,6 @@
           </#if>
 
         </div>
-        <div class="tLK--footer__item u--text--right">
-          <@anotherWay.kw />
-        </div>
       </div>
   </footer>
   </#macro>

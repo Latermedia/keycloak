@@ -304,3 +304,22 @@ input[type='checkbox']fieldset[disabled] {
 input[disabled] {
   background-color: var(--GREY_LIGHT);
 }
+
+.tSU--card__inputButton {
+  position: absolute !important;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+  fill: currentColor;
+}
+
+.tSU--card__inputIcon {
+  color: #bbcbda;
+  width: 28px;
+  height: 28px;
+}
+
+.o--icon--md {
+  height: 1.485rem;
+  width: 1.485rem;
+}

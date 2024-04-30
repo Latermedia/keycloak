@@ -7,14 +7,19 @@
   <#if section="header">
     ${msg("loginAccountTitle")}
     <#elseif section="form">
-
+  
       <#if realm.password>
         <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}"
           method="post">
           <#if !usernameHidden??>
             <div class="o--formWrapper--lg ${properties.kcFormGroupClass!}">
-              <@inputPrimary.kw autocomplete="off" autofocus=true
-                disabled=usernameEditDisabled?? invalid=["username", "password" ] name="username" type="email"
+              <@inputPrimary.kw
+                autofocus=true
+                class="qa--signin_email_input"
+                disabled=usernameEditDisabled??
+                invalid=["username", "password" ]
+                name="username"
+                type="email"
                 value=(login.username)!''>
                 <@labelUsername.kw />
               </@inputPrimary.kw>
@@ -40,7 +45,7 @@
             </div>
           </div>
           <div class="o--formSubmit">
-            <@buttonPrimary.kw name="login" id="kc-login" type="submit">
+            <@buttonPrimary.kw class="qa--signin_next_button" name="login" id="kc-login" type="submit">
               ${msg("Next")}
             </@buttonPrimary.kw>
           </div>

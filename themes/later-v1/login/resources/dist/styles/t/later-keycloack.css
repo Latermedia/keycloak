@@ -198,3 +198,23 @@
     padding: var(--SPACER_LG);
   }
 }
+
+.warning__container {
+  background-color: #fee2e2; /* light red background */
+  color: #dc2626;            /* darker red text color */
+  padding: 1rem;             /* 16px padding on all sides */
+  border-radius: 0.5rem;     /* rounded corners with medium radius */
+  line-height: 1.25rem;      /* standard line height for small text */
+}
+
+.success__container {
+  background-color: #d1fae5; /* light green background */
+  color: #059669;            /* darker green text color */
+  padding: 1rem;             /* 16px padding on all sides */
+  border-radius: 0.5rem;     /* rounded corners with medium radius */
+  line-height: 1.25rem;  
+}
+
+#hideIcon {
+  display: none;
+}

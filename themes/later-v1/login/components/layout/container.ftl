@@ -9,7 +9,7 @@
           <h3 class="o--logo__title">${heading}</h3>
         </div>
         <h3 class="o--header__action">
-          New to Later? <a class="u--inline u--p__l__xs" href="${properties.registrationUrl}">Create&nbsp;an&nbsp;Account</a>
+          New to Later? <a class="u--inline u--p__l__xs qa--createAccount_link" href="${properties.registrationUrl}">Create&nbsp;an&nbsp;Account</a>
         </h3>
       </div>
     </header>

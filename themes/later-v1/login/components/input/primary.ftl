@@ -1,6 +1,6 @@
 <#import "./error.ftl" as inputError>
 
-<#macro kw invalid name autofocus=false disabled=false message=true required=true placeholder="" rest...>
+<#macro kw invalid name autofocus=false disabled=false message=true required=true placeholder="" class="" rest...>
   <label class="sr-only" for="${name}">
     <#nested>
   </label>
@@ -9,7 +9,7 @@
     <#if disabled>disabled</#if>
     <#if required>required</#if>
     aria-invalid="${messagesPerField.existsError(invalid)?c}"
-    class="o--form__input<#if messagesPerField.existsError(invalid)> hasError</#if>"
+    class="o--form__input<#if messagesPerField.existsError(invalid)> hasError</#if><#if class?has_content> ${class}</#if>"
     id="${name}"
     name="${name}"
     <#if placeholder?has_content>
