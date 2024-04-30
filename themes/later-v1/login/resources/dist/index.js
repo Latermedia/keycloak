@@ -178,3 +178,19 @@ function updateFeaturedCard() {
   }
 }
 
+// LATER INFLUENCE
+console.log({clientId});
+if (clientId === 's4') {
+  const logo = document.querySelector('#logo');
+  if (logo) {
+    logo.classList.replace('o--logo__img__social', 'o--logo__img__influence');
+  }
+  const headerAction = document.querySelector('.o--header__action');
+  if (headerAction) {
+    headerAction.style.display = "none";
+  }
+  const registerButton = document.querySelector('#kc-registration');
+  if (registerButton) {
+    registerButton.style.display = "none";
+  }
+}

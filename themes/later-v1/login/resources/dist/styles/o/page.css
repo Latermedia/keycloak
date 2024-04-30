@@ -35,7 +35,12 @@
   display: block;
   width: 80px;
   height: 33px;
-  background: url(../../img/img--logo--sprite.svg) no-repeat 0px 0px;
+}
+.o--logo__img__social{
+  background: url(../../img/img--logo--sprite.svg) no-repeat 0px 0px; 
+}
+.o--logo__img__influence{ 
+  background: url(../../img/img--logo--influence--sprite.svg) no-repeat 0px 0px; 
 }
 .o--logo__title {
   float: left;

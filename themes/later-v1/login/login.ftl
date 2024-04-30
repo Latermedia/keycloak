@@ -80,7 +80,7 @@
       <@provider.kw />
     </#if>
   <#elseif section="info">
-    <p class="u--text--center">
+    <p class="u--text--center" id="kc-registration">
       ${msg("noAccount")}
       <@linkPrimary.kw href=properties.registrationUrl>
         ${msg("doRegister")}

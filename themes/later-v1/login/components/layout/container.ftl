@@ -4,7 +4,7 @@
       <div class="o--container tLK--headerContainer">
         <div class="o--logoWrapper">
           <a href="https://later.com" class="o--logo" target="_self" rel="" title="Later.com">
-            <div class="o--logo__img"></div>    
+            <div id="logo" class="o--logo__img o--logo__img__social"></div>    
           </a>
           <h3 class="o--logo__title">${heading}</h3>
         </div>
