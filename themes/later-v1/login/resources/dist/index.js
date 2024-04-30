@@ -113,3 +113,12 @@ if (utmSource === 'campaign' || utmSource === 'mavrck') {
     campaignElement.classList.remove('u--hide');
   }
 }
+
+document.querySelector('.tSU--card__inputButton').addEventListener('click', function() {
+  const passwordInput = document.getElementById('password');
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+});
