@@ -69,6 +69,7 @@ const redirectParams = redirectUri ? new URLSearchParams(redirectUri.split('?')[
 function getUTMValues() {
   const isNewSession = window.location.href.includes('openid-connect');
   const attributes = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_term', 'utm_content', 'campaign_id'];
+  const utmValues = {};
   attributes.forEach(attribute => {
     utmValues[attribute] = isNewSession ? redirectParams.get(attribute) : localStorage.getItem(`keycloak_${attribute}`);
   });
