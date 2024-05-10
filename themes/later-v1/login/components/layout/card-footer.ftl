@@ -8,7 +8,7 @@
         <div class="tLK--footer__item u--text--left">
           <#if realm.resetPasswordAllowed && showForgotPassword>
             <@linkPrimary.kw href=url.loginResetCredentialsUrl>
-              <span class="u--text--light u--text--underline u--text--sm">${msg("doForgotPassword")}</span>
+              <span class="u--text--light u--text--underline u--text--sm" id="forgotLink">${msg("doForgotPassword")}</span>
             </@linkPrimary.kw>
           </#if>
 

@@ -1,11 +1,55 @@
+const appName = 'Later_Social';
+
 !function () {
   var i = "analytics", analytics = window[i] = window[i] || []; if (!analytics.initialize) if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice."); else {
     analytics.invoked = !0; analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "screen", "once", "off", "on", "addSourceMiddleware", "addIntegrationMiddleware", "setAnonymousId", "addDestinationMiddleware", "register"]; analytics.factory = function (e) { return function () { if (window[i].initialized) return window[i][e].apply(window[i], arguments); var n = Array.prototype.slice.call(arguments); if (["track", "screen", "alias", "group", "page", "identify"].indexOf(e) > -1) { var c = document.querySelector("link[rel='canonical']"); n.push({ __t: "bpc", c: c && c.getAttribute("href") || void 0, p: location.pathname, u: location.href, s: location.search, t: document.title, r: document.referrer }) } n.unshift(e); analytics.push(n); return analytics } }; for (var n = 0; n < analytics.methods.length; n++) { var key = analytics.methods[n]; analytics[key] = analytics.factory(key) } analytics.load = function (key, n) { var t = document.createElement("script"); t.type = "text/javascript"; t.async = !0; t.setAttribute("data-global-segment-analytics-key", i); t.src = "https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js"; var r = document.getElementsByTagName("script")[0]; r.parentNode.insertBefore(t, r); analytics._loadOptions = n }; analytics._writeKey = "rjo2ZXgRv6IaA4B8MKXd92cLlgopFVMM";; analytics.SNIPPET_VERSION = "5.2.0";
     analytics.load("rjo2ZXgRv6IaA4B8MKXd92cLlgopFVMM");
-    console.log('analytics.js loaded');
     analytics.page();
+    analytics.track('viewed-page', {page: 'login', later_app: appName})
   }
 }();
+
+function addPasswordIconListener() {
+  const passwordIcon = document.querySelector('.tSU--card__inputButton');
+  if (passwordIcon) {
+    passwordIcon.addEventListener('click', function () {
+      const passwordInput = document.getElementById('password');
+      const showIcon = document.getElementById('showIcon'); // SVG for showing the password
+      const hideIcon = document.getElementById('hideIcon'); // SVG for hiding the password
+
+
+      // Toggle the input type between 'password' and 'text'
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        showIcon.style.display = 'none'; // Hide the 'show' icon
+        hideIcon.style.display = 'block'; // Display the 'hide' icon
+      } else {
+        passwordInput.type = 'password';
+        showIcon.style.display = 'block'; // Display the 'show' icon
+        hideIcon.style.display = 'none'; // Hide the 'hide' icon
+      }
+    });
+  } else {
+    const forgotLink = document.querySelector('#forgotLink');
+    if (forgotLink) {
+      forgotLink.style.display = 'none';
+    }
+  }
+}
+
+function updateRegistrationUrls(oldUrl, newUrl) {
+  // Get all anchor tags in the document
+  const links = document.querySelectorAll('a');
+
+  // Loop through all links
+  links.forEach(link => {
+      // Check if the href attribute matches the old URL
+      if (link.href === oldUrl) {
+          // Update the href attribute to the new URL
+          link.href = newUrl;
+      }
+  });
+}
 
 const loginButtonId = 'loginButton';
 const loginButtonElement = document.getElementById(loginButtonId);
@@ -18,47 +62,47 @@ if (loginButtonElement) {
 
 const urlParams = new URLSearchParams(window.location.search);
 const redirectUri = urlParams.get('redirect_uri');
-const redirectParams = redirectUri ? new URLSearchParams(redirectUri.split('?')[1]) : null;
-console.log('redirectParams: redirectParams');
-console.log({referrer: document.referrer});
+const clientId = urlParams.get('client_id');
+const isLaterProduction = window.location.href.includes('later-production');
+const redirectParams = redirectUri ? new URLSearchParams(redirectUri.split('?')[1]) : undefined;
 
-const isNewSession =
-  window.location.href.includes('openid-connect') ||
-  document.referrer.includes('app.later.com') ||
-  document.referrer.includes('staging.later.com') ||
-  document.referrer.includes('localhost');
-console.log({ isNewSession });
+function getUTMValues() {
+  const isNewSession = window.location.href.includes('openid-connect');
+  const attributes = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_term', 'utm_content', 'campaign_id'];
+  attributes.forEach(attribute => {
+    utmValues[attribute] = isNewSession ? redirectParams.get(attribute) : localStorage.getItem(`keycloak_${attribute}`);
+  });
+  console.log(utmValues);
 
-const utmSource = isNewSession ? redirectParams.get('utm_source') : localStorage.getItem('keycloak_utm_source');
-const campaignId = isNewSession ? redirectParams.get('campaign_id') : localStorage.getItem('keycloak_campaign_id');
-console.log({ utmSource });
-console.log({ campaignId });
-
-if (isNewSession) {
-  localStorage.removeItem('keycloak_utm_source');
-  localStorage.removeItem('keycloak_campaign_id');
-
-  if (utmSource) {
-    localStorage.setItem('keycloak_utm_source', utmSource);
+  if (isNewSession) {
+    attributes.forEach(attribute => {
+      localStorage.removeItem(`keycloak_${attribute}`);
+      if (utmValues[attribute]) {
+        localStorage.setItem(`keycloak_${attribute}`, utmValues[attribute]);
+      }
+    });
   }
-  if (campaignId) {
-    localStorage.setItem('keycloak_campaign_id', campaignId);
+  return utmValues;
+}
+const utmValues = getUTMValues();
+const queryParams = Object.entries(utmValues)
+  .filter(([key, value]) => value)
+  .map(([key, value]) => `${key}=${value}`)
+  .join('&');
+const registrationUrl  = isLaterProduction ? `https://app.later.com/user/signup?${queryParams}` : `https://staging.later.com/user/signup?${queryParams}`;
+updateRegistrationUrls('https://staging.later.com/user/signup', registrationUrl);
+updateFeaturedCard();
+
+if (utmValues.utm_source === 'campaign' || utmValues.utm_source === 'mavrck') {
+  const campaignElement = document.querySelector('#mavrck-welcome');
+  if (campaignElement) {
+    campaignElement.classList.remove('u--hide');
   }
 }
 
-const utmToSelector = {
-  mavrck: '.tLK--card--campaign',
-  featured: '.tLK--card--featured',
-  'linkin.bio': '.tLK--card--testimonial',
-  'linkinbio': '.tLK--card--testimonial',
-  contributor: '.tLK--card--invite',
-  invite: '.tLK--card--invite'
-};
+addPasswordIconListener();
 
-const element = document.querySelector(utmToSelector[utmSource]);
-if (element) {
-  element.classList.remove('u--hide');
-} else if (campaignId) {
+function renderCampaign() {
   const loginHeader = document.querySelector('.tLK--card__title');
   if (loginHeader && loginHeader.innerText === 'Log In') {
     loginHeader.innerText = 'Log In with Later to Apply';
@@ -71,10 +115,12 @@ if (element) {
 
   // Get the referrer URL
   var referrer = document.referrer;
-  const campaignUrl = document.referrer.includes('app.later.com') ?
-    `https://app.later.com/api/public_campaigns/${campaignId}` :
-    `https://staging.later.com/api/public_campaigns/${campaignId}`;
+  const campaignUrl = isLaterProduction ?
+    `https://app.later.com/api/public_campaigns/${utmValues['campaign_id']}` :
+    `https://staging.later.com/api/public_campaigns/${utmValues['campaign_id']}`;
 
+
+    
   fetch(campaignUrl)
     .then(response => response.json())
     .then(data => {
@@ -98,35 +144,32 @@ if (element) {
       img.setAttribute('class', 'o--media');
       img.src = campaign.campaign_image_url;
       imageContainer.appendChild(img);
-    });
-
-} else {
-  const defaultElement = document.querySelector(utmToSelector['featured']);
-  if (defaultElement) {
-    defaultElement.classList.remove('u--hide');
-  }
+    }).catch(error => {
+      console.log('Error:', error)
+    });;
 }
 
-if (utmSource === 'campaign' || utmSource === 'mavrck') {
-  const campaignElement = document.querySelector('#mavrck-welcome');
-  if (campaignElement) {
-    campaignElement.classList.remove('u--hide');
-  }
-}
+function updateFeaturedCard() {
+  const utmToSelector = {
+    mavrck: '.tLK--card--campaign',
+    featured: '.tLK--card--featured',
+    'linkin.bio': '.tLK--card--testimonial',
+    'linkinbio': '.tLK--card--testimonial',
+    contributor: '.tLK--card--invite',
+    invite: '.tLK--card--invite'
+  };
 
-document.querySelector('.tSU--card__inputButton').addEventListener('click', function() {
-  const passwordInput = document.getElementById('password');
-  const showIcon = document.getElementById('showIcon'); // SVG for showing the password
-  const hideIcon = document.getElementById('hideIcon'); // SVG for hiding the password
+  const element = document.querySelector(utmToSelector[utmValues.utm_source]);
+  if (element) {
+    element.classList.remove('u--hide');
+  } else if (utmValues['campaign_id']) {
+    renderCampaign();
 
-  // Toggle the input type between 'password' and 'text'
-  if (passwordInput.type === 'password') {
-    passwordInput.type = 'text';
-    showIcon.style.display = 'none';    // Hide the 'show' icon
-    hideIcon.style.display = 'block';   // Display the 'hide' icon
   } else {
-    passwordInput.type = 'password';
-    showIcon.style.display = 'block';   // Display the 'show' icon
-    hideIcon.style.display = 'none';    // Hide the 'hide' icon
+    const defaultElement = document.querySelector(utmToSelector['featured']);
+    if (defaultElement) {
+      defaultElement.classList.remove('u--hide');
+    }
   }
-});
+}
+
