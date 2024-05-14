@@ -23,6 +23,8 @@
         <#-- Default Feature Card -->
         <div class="tLK--card tLK--card--featured u--hide"></div>
 
+        <div class="tLK--card tLK--card--mavrck u--hide"></div>
+
         <#-- Testimonial Feature Card -->
         <div class="tLK--card tLK--card--testimonial u--hide">
           <p class="tLK--card__title--testimonial">

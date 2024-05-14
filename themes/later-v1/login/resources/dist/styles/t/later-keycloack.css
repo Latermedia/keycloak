@@ -34,6 +34,14 @@
   background-size: cover;
 }
 
+.tLK--card.tLK--card--mavrck {
+  flex: 1;
+  width: 360px;
+  height: 456px;
+  background-image: url(../../img/img--signUp--mavrck--bg.png);
+  background-size: cover;
+}
+
 .tLK--card.tLK--card--testimonial {  
   margin: 0 var(--SPACER);
   width: 360px;

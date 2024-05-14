@@ -63,7 +63,7 @@ if (loginButtonElement) {
 const urlParams = new URLSearchParams(window.location.search);
 const redirectUri = urlParams.get('redirect_uri');
 const clientId = urlParams.get('client_id');
-const isLaterProduction = window.location.href.includes('later-production');
+const isLaterProduction = window.location.pathname.includes('later-production');
 const redirectParams = redirectUri ? new URLSearchParams(redirectUri.split('?')[1]) : undefined;
 
 function getUTMValues() {
@@ -94,7 +94,7 @@ const registrationUrl  = isLaterProduction ? `https://app.later.com/user/signup?
 updateRegistrationUrls('https://staging.later.com/user/signup', registrationUrl);
 updateFeaturedCard();
 
-if (utmValues.utm_source === 'campaign' || utmValues.utm_source === 'mavrck') {
+if (utmValues.utm_source === 'campaign') {
   const campaignElement = document.querySelector('#mavrck-welcome');
   if (campaignElement) {
     campaignElement.classList.remove('u--hide');
@@ -130,7 +130,9 @@ function renderCampaign() {
         part.setAttribute('class', className);
         part.innerText = text;
         const descriptionContainer = document.querySelector('#campaign__description');
-        descriptionContainer.appendChild(part);
+        if (descriptionContainer) {
+          descriptionContainer.appendChild(part);
+        }
       };
 
       const campaign = data.campaign;
@@ -144,15 +146,17 @@ function renderCampaign() {
       img.setAttribute('alt', 'Campaign image');
       img.setAttribute('class', 'o--media');
       img.src = campaign.campaign_image_url;
-      imageContainer.appendChild(img);
+      if (imageContainer) {
+        imageContainer.appendChild(img);
+      }
     }).catch(error => {
       console.log('Error:', error)
-    });;
+    });
 }
 
 function updateFeaturedCard() {
   const utmToSelector = {
-    mavrck: '.tLK--card--campaign',
+    mavrck: '.tLK--card--mavrck',
     featured: '.tLK--card--featured',
     'linkin.bio': '.tLK--card--testimonial',
     'linkinbio': '.tLK--card--testimonial',
