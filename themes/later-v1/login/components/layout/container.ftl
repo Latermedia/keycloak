@@ -20,8 +20,11 @@
         </div>
 
         
-        <#-- Default Feature Card -->
+        <#-- Social Feature Card -->
         <div class="tLK--card tLK--card--featured u--hide"></div>
+
+        <#-- Influence Feature Card -->
+        <div class="tLK--card tLK--card--influence u--hide"></div>
 
         <div class="tLK--card tLK--card--mavrck u--hide"></div>
 

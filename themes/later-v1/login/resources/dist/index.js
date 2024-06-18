@@ -158,6 +158,7 @@ function updateFeaturedCard() {
   const utmToSelector = {
     mavrck: '.tLK--card--mavrck',
     featured: '.tLK--card--featured',
+    influence: '.tLK--card--influence',
     'linkin.bio': '.tLK--card--testimonial',
     'linkinbio': '.tLK--card--testimonial',
     contributor: '.tLK--card--invite',
@@ -171,7 +172,7 @@ function updateFeaturedCard() {
     renderCampaign();
 
   } else {
-    const defaultElement = document.querySelector(utmToSelector['featured']);
+    const defaultElement = clientId === 's4' ? document.querySelector(utmToSelector['influence']) : document.querySelector(utmToSelector['featured']);
     if (defaultElement) {
       defaultElement.classList.remove('u--hide');
     }
