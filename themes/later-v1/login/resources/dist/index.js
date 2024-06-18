@@ -158,6 +158,7 @@ function updateFeaturedCard() {
   const utmToSelector = {
     mavrck: '.tLK--card--mavrck',
     featured: '.tLK--card--featured',
+    influence: '.tLK--card--influence',
     'linkin.bio': '.tLK--card--testimonial',
     'linkinbio': '.tLK--card--testimonial',
     contributor: '.tLK--card--invite',
@@ -171,10 +172,26 @@ function updateFeaturedCard() {
     renderCampaign();
 
   } else {
-    const defaultElement = document.querySelector(utmToSelector['featured']);
+    const defaultElement = clientId === 's4' ? document.querySelector(utmToSelector['influence']) : document.querySelector(utmToSelector['featured']);
     if (defaultElement) {
       defaultElement.classList.remove('u--hide');
     }
   }
 }
 
+// LATER INFLUENCE
+console.log({clientId});
+if (clientId === 's4') {
+  const logo = document.querySelector('#logo');
+  if (logo) {
+    logo.classList.replace('o--logo__img__social', 'o--logo__img__influence');
+  }
+  const headerAction = document.querySelector('.o--header__action');
+  if (headerAction) {
+    headerAction.style.display = "none";
+  }
+  const registerButton = document.querySelector('#kc-registration');
+  if (registerButton) {
+    registerButton.style.display = "none";
+  }
+}

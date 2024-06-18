@@ -34,6 +34,14 @@
   background-size: cover;
 }
 
+.tLK--card.tLK--card--influence {
+  flex: 1;
+  width: 360px;
+  height: 456px;
+  background-image: url(../../img/img--featured--influence.png);
+  background-size: cover;
+}
+
 .tLK--card.tLK--card--mavrck {
   flex: 1;
   width: 360px;

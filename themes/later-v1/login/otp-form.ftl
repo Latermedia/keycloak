@@ -46,11 +46,11 @@
             <span class="text-sm">Need help with verification codes?</span>
             </@linkSecondary.kw>
           </div>
-          <#if auth.showTryAnotherWayLink()>
+
           <div class="tLK--footer__item u--text--right">
             <@anotherWay.kw />
           </div>
-          </#if>
+
         </div>
 
   </#if>
