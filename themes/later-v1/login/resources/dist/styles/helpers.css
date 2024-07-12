@@ -339,3 +339,24 @@
 .u--m__r__lg{
   margin-right: var(--SPACER_LG) !important;
 }
+
+/* Flexbox */
+.u--flex {
+  display: flex !important;
+}
+
+.u--flexInline {
+  display: inline-flex !important;
+}
+
+.u--flex__order--1 {
+  order: 1 !important;
+}
+
+.u--flex__order--2 {
+  order: 2 !important;
+}
+
+.u--flex__order--3 {
+  order: 3 !important;
+}

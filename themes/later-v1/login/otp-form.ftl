@@ -30,11 +30,11 @@
               </div>
             </div>
             <div id="kc-form-buttons" class="u--row u--m__t__lg">
-              <div class="u--row--column u--m__r__xs">
-                <input class="o--btn--lg o--btn--outline qa--signin_resend_button" name="resend" id="kc-resend" type="submit" value="${msg("doResend")}" />
+              <div class="u--row--column  u--flex__order--2 u--m__l__xs">
+                <input class="o--btn--lg o--btn--primary" name="submit" id="kc-submit" type="submit" value="Log In" />
               </div>
-              <div class="u--row--column u--m__l__xs">
-                <input class="o--btn--lg o--btn--primary qa--signin_login_button" name="submit" id="kc-submit" type="submit" value="Log In" />
+              <div class="u--row--column u--flex__order--1 u--m__r__xs">
+                <input class="o--btn--lg o--btn--outline" name="resend" id="kc-resend" type="submit" value="${msg("doResend")}" />
               </div>
             </div>
           </div>
